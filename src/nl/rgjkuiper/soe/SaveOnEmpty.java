@@ -23,7 +23,7 @@ public class SaveOnEmpty extends JavaPlugin{
 	public void onEnable(){
 		SaveOnEmpty.instance = this;
 		
-		new Updater(this, this.bukkitID, this.getFile(), Updater.UpdateType.DEFAULT, false);
+		new Updater(this, this.bukkitID, this.getFile(), Updater.UpdateType.DEFAULT, true);
 		
 		try {
 		    Metrics metrics = new Metrics(this);
