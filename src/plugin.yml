@@ -1,6 +1,6 @@
 name: SaveOnEmpty
 main: nl.rgjkuiper.soe.SaveOnEmpty
-version: 1.0
+version: 0.9
 description: Saves the server on no players online.
 author: Robin Kuiper
 commands:

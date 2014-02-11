@@ -16,16 +16,19 @@ public class SaveOnEmpty extends JavaPlugin{
 	public int timeout = 60;
 	public boolean running = false;
 	public int ID;
+	private int bukkitID = 73869;
+	
+	
 	
 	public void onEnable(){
 		SaveOnEmpty.instance = this;
 		
+		new Updater(this, this.bukkitID, this.getFile(), Updater.UpdateType.DEFAULT, false);
+		
 		try {
 		    Metrics metrics = new Metrics(this);
 		    metrics.start();
-		} catch (IOException e) {
-		    // Failed to submit the stats :-(
-		}
+		} catch (IOException e) {  }
 		
 		this.saveDefaultConfig();
 		this.timeout = this.getConfig().getInt("timeout");
@@ -45,23 +48,10 @@ public class SaveOnEmpty extends JavaPlugin{
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		if(!cmd.getName().equalsIgnoreCase("soe"))
-			return false;		
+			return false;
 		
 		if(args.length == 0){
-			if(sender.hasPermission("saveonempty.save") || sender.hasPermission("saveonempty.admin")){
-				sender.sendMessage("----" + ChatColor.GREEN + "SaveOnEmpty Help" + ChatColor.WHITE + "----");
-				sender.sendMessage(ChatColor.AQUA + "/soe" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows this info.");
-				sender.sendMessage(ChatColor.AQUA + "/soe save-now" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Save the world manually");
-			}else{
-				sender.sendMessage(ChatColor.DARK_RED + "No permission!");
-				return false;
-			}
-			
-			if(sender.hasPermission("saveonempty.admin")){
-				sender.sendMessage(ChatColor.AQUA + "/soe timeout" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Set the timeout in seconds");
-				sender.sendMessage(ChatColor.AQUA + "/soe reload" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Reloads the config");
-			}
-			return true;
+			this.showHelp(sender); return true;
 		}else if(args[0].equalsIgnoreCase("reload")){
 			if(sender.hasPermission("saveonempty.admin")){
 				this.reloadSOE();
@@ -70,6 +60,7 @@ public class SaveOnEmpty extends JavaPlugin{
 				return true;
 			}else{
 				sender.sendMessage(ChatColor.DARK_RED + "No permission!");
+				
 				return false;
 			}
 		}else if(args[0].equalsIgnoreCase("timeout")){
@@ -110,6 +101,23 @@ public class SaveOnEmpty extends JavaPlugin{
 	private void reloadSOE(){
 		reloadConfig();
 		this.timeout = this.getConfig().getInt("timeout");
+	}
+	
+	private void showHelp(CommandSender sender){
+		if(sender.hasPermission("saveonempty.save") || sender.hasPermission("saveonempty.admin")){
+			sender.sendMessage("----" + ChatColor.GREEN + "SaveOnEmpty Help" + ChatColor.WHITE + "----");
+			sender.sendMessage(ChatColor.AQUA + "/soe" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Shows this info.");
+			sender.sendMessage(ChatColor.AQUA + "/soe save-now" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Save the world manually");
+		}else{
+			sender.sendMessage(ChatColor.DARK_RED + "No permission!");
+			return;
+		}
+		
+		if(sender.hasPermission("saveonempty.admin")){
+			sender.sendMessage(ChatColor.AQUA + "/soe timeout" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Set the timeout in seconds");
+			sender.sendMessage(ChatColor.AQUA + "/soe reload" + ChatColor.WHITE + " | " + ChatColor.GREEN + "Reloads the config");
+		}
+		return;
 	}
 	
 	private static boolean isNumeric(String str){  
