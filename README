@@ -1,4 +1,4 @@
-<strong>SaveOnEmpty</strong> makes it possible to save your server at the moment it's empty. This way you can avoid the so called lagspikes caused by saving.
+<b>SaveOnEmpty</b> makes it possible to save your server at the moment it's empty. This way you can avoid the so called lagspikes caused by saving.
 
 The plugin will check if there are more players online at the moment one of your players logout.
 
@@ -6,23 +6,32 @@ If there aren't any more players online, the plugin waits the specified time in 
 
 This plugin is specialized for small server, where there times there are now players online.
 
-<strong>Installation</strong>
+<b>Installation</b>
 
-Put the downloaded SaveOnEmpty.jar in your server's plugin folder.
-Reload or restart the server (/reload).
-Set the preferred amount of waiting time in seconds with "/soe timeout SECONDS" (default is 60).
+<ol>
+	<li>Put the downloaded SaveOnEmpty.jar in your server's plugin folder.</li>
+	<li>Reload or restart the server (/reload).</li>
+	<li>Set the preferred amount of waiting time in seconds with "/soe timeout SECONDS" (default is 60).</li>
+</ol>
 
-<strong>Commands</strong>
+<b>Commands</b>
 
-/soe - Shows the SaveOnEmpty help.
-/soe save-now - Save the world manually (Permission: saveonempty.save)
-/soe timeout SECONDS - Set the waiting time in seconds.
-/soe reload - Reload the config (only necessary if you changed the config.yml manually).
+<ul>
+	<li>/soe - Shows the SaveOnEmpty help.</li>
+	<li>/soe save-now - Save the world manually (Permission: saveonempty.save)</li>
+	<li>/soe timeout SECONDS - Set the waiting time in seconds.</li>
+	<li>/soe reload - Reload the config (only necessary if you changed the config.yml manually).</li>
+</ul>
 
-<strong>Permissions</strong>
+<b>Permissions</b>
 
-saveonempty.admin - Gives access to all functions.
-saveonempty.save - Gives access to manually saving (/soe save-now).
-Configuratie
+<ul>
+	<li>saveonempty.admin - Gives access to all functions.</li>
+	<li>saveonempty.save - Gives access to manually saving (/soe save-now).</li>
+</ul>
 
-timeout: 60 - The waiting time in seconds.
+<b>Configuration</b>
+
+<ul>
+	<li>timeout: 60 - The waiting time in seconds.</li>
+</ul>
