@@ -1,4 +1,4 @@
-<b>SaveOnEmpty</b> makes it possible to save your server at the moment it's empty. This way you can avoid the so called lagspikes caused by saving.
+<b>SaveOnEmpty</b> is a Bukkit minecraft plugin which makes it possible to save your server at the moment it's empty. This way you can avoid the so called lagspikes caused by saving.
 
 The plugin will check if there are more players online at the moment one of your players logout.
 
